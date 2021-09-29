@@ -8,11 +8,11 @@ const wss = new WebSocket.Server({ server:server });
 wss.on('connection', function connection(ws) {
   console.log('A new client Connected!');
   setInterval(() => {
-    const random = Math.random();
+    const random = Math.floor(Math.random()*100);
     wss.clients.forEach((client) => {
         client.send(random);
     })
-  }, 5000);
+  }, 10000);
 });
 
 app.get('/', (req, res) => res.send('Hello World!'))
